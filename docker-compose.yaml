@@ -1,0 +1,26 @@
+#services:
+#  portfolio:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: portfolio
+#    ports:
+#      - "3000:3000"
+#    restart: unless-stopped
+#    environment:
+#      NODE_ENV: production
+
+services:
+  # Serve variant (use with: docker compose up nextjs-static-export-with-serve --build)
+  nextjs-static-export-with-serve:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nextjs-static-export-serve-image
+    container_name: nextjs-static-export-serve-container
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
